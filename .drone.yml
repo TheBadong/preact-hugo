@@ -9,29 +9,26 @@ steps:
       - export BASE_URL=https://${DRONE_REPO_OWNER}.github.io/preact-hugo/
       - preact create ${DRONE_REPO}#${DRONE_COMMIT} test_ci
       - echo ${DRONE_REPO}#{$DRONE_COMMIT}
-
-  - name: install
-    image: lowess/preact-cli # (:latest)
-    commands:
       - cd test_ci
       - npm install
-
-  - name: build
-    image: lowess/preact-cli # (:latest)
-    environment:
-      
-    commands:
-      - export BASE_URL=https://${DRONE_REPO_OWNER}.github.io/preact-hugo/
-      - echo ${BASE_URL}
-      - cd test_ci
       - npm run build
 
-  - name: preview
-    image: lowess/preact-cli # (:latest)
-    commands:
-      - export BASE_URL=https://${DRONE_REPO_OWNER}.github.io/preact-hugo/
-      - cd test_ci
-      - npm run build:preview
+  # - name: install
+  #   image: lowess/preact-cli # (:latest)
+  #   commands:
+  #     - cd test_ci
+  #     - npm install
+  #     - npm run build
+
+  # - name: build
+  #   image: lowess/preact-cli # (:latest)
+  #   environment:
+      
+  #   commands:
+  #     - export BASE_URL=https://${DRONE_REPO_OWNER}.github.io/preact-hugo/
+  #     - echo ${BASE_URL}
+  #     - cd test_ci
+  #     - npm run build
 
   - name: slack
     image: plugins/slack
