@@ -2,6 +2,10 @@
 kind: pipeline
 name: my-super-ci-pipeline
 
+environment:
+  BASE_URL: ${GITHUB_REPO_OWNER}.github.io/${DRONE_REPO_NAME}
+
+
 steps:
   - name: create-template
     image: lowess/preact-cli # (:latest)
