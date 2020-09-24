@@ -26,3 +26,15 @@ steps:
     commands:
       - cd test_ci
       - npm run build:preview
+
+  - name: slack
+    image: plugins/slack
+    settings:
+      webhook: https://hooks.slack.com/services/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
+      channel: drone-ci
+      template: >
+        {{#success build.status}}
+          build {{build.number}} succeeded. Good job.
+        {{else}}
+          build {{build.number}} failed. Fix me please.
+        {{/success}}
