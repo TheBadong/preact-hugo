@@ -9,21 +9,18 @@ steps:
       - preact create ${DRONE_REPO}#{$DRONE_COMMIT} test_ci
       - echo ${DRONE_REPO}#{$DRONE_COMMIT}
 
-steps:
   - name: install
     image: lowess/preact-cli # (:latest)
     commands:
       - cd test_ci
       - npm install
 
-steps:
   - name: build
     image: lowess/preact-cli # (:latest)
     commands:
       - cd test_ci
       - npm run build
 
-steps:
   - name: preview
     image: lowess/preact-cli # (:latest)
     commands:
