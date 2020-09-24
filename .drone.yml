@@ -1,0 +1,9 @@
+---
+kind: pipeline
+name: my-super-ci-pipeline
+
+steps:
+  - name: hello-world
+  image: busybox # (:latest)
+  commands:
+    - echo 'Hello World'
