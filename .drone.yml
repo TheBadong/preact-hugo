@@ -6,7 +6,7 @@ steps:
   - name: create template
     image: lowess/preact-cli # (:latest)
     commands:
-    - preact create template $DRONE_REPO_OWNER/$DRONE_REPO_NAME#$DRONE_COMMIT
+    - preact create template ${DRONE_REPO_OWNER}/${DRONE_REPO_NAME}#${DRONE_COMMIT}
 
 steps:
   - name: install
