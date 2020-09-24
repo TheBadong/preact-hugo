@@ -2,10 +2,6 @@
 kind: pipeline
 name: my-super-ci-pipeline
 
-environment:
-  BASE_URL: https://${DRONE_REPO_OWNER}.github.io/preact-hugo/
-
-
 steps:
   - name: create-template
     image: lowess/preact-cli # (:latest)
@@ -21,13 +17,17 @@ steps:
 
   - name: build
     image: lowess/preact-cli # (:latest)
+    environment:
+      
     commands:
+      - export BASE_URL=${DRONE_REPO_OWNER}.github.io/preact-hugo/
       - cd test_ci
       - npm run build
 
   - name: preview
     image: lowess/preact-cli # (:latest)
     commands:
+      - export BASE_URL=${DRONE_REPO_OWNER}.github.io/preact-hugo/
       - cd test_ci
       - npm run build:preview
 
