@@ -21,6 +21,7 @@ steps:
       
     commands:
       - export BASE_URL=${DRONE_REPO_OWNER}.github.io/preact-hugo/
+      - echo ${BASE_URL}
       - cd test_ci
       - npm run build
 
