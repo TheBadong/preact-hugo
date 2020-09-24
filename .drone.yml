@@ -31,7 +31,7 @@ steps:
     image: plugins/slack
     settings:
       webhook: 
-        from_secret: webhook
+        from_secret: slack_webhook
       channel: drone-ci
       template: >
         {{#success build.status}}
