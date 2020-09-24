@@ -3,7 +3,25 @@ kind: pipeline
 name: my-super-ci-pipeline
 
 steps:
-  - name: hello-world
-    image: busybox # (:latest)
+  - name: create template
+    image: lowess/preact-cli # (:latest)
     commands:
-    - echo 'Hello World'
+    - preact create template $DRONE_REPO_OWNER/$DRONE_REPO_NAME#$DRONE_COMMIT
+
+steps:
+  - name: install
+    image: lowess/preact-cli # (:latest)
+    commands:
+    - npm install
+
+steps:
+  - name: build
+    image: lowess/preact-cli # (:latest)
+    commands:
+    - npm run build
+
+steps:
+  - name: preview
+    image: lowess/preact-cli # (:latest)
+    commands:
+    - npm run build:preview
