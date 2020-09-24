@@ -35,7 +35,16 @@ steps:
       channel: drone-ci
       template: >
         {{#success build.status}}
-          build {{build.number}} succeeded. Good job.
+          build {{build.number}} succeeded. bg badong
         {{else}}
-          build {{build.number}} failed. Fix me please.
+          build {{build.number}} failed. nul nul nul badong.
         {{/success}}
+
+  - name: publish  
+    image: plugins/gh-pages
+    settings:
+      username:
+        from_secret: github_username
+      password: 
+        from_secret: github_password
+      pages_directory: dist/
